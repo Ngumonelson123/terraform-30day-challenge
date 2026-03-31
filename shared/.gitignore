@@ -1,0 +1,41 @@
+# =============================================================================
+# .gitignore
+# DAY 13 DEMO POINT: Show this file when covering sensitive data.
+# These files must NEVER be committed — they contain secrets or local state.
+# =============================================================================
+
+# --- Terraform state (local) ---
+# After Day 6, state lives in S3 — but .gitignore this as a safety net
+*.tfstate
+*.tfstate.backup
+*.tfstate.*.backup
+
+# --- Terraform working directory ---
+.terraform/
+.terraform.lock.hcl   # Commit this in real projects! Excluded here for demo clarity.
+
+# --- Variable files that may contain secrets ---
+*.auto.tfvars          # auto-loaded tfvars — easy to accidentally put secrets here
+secrets.tfvars
+secrets.auto.tfvars
+*secrets*
+
+# --- Crash logs ---
+crash.log
+crash.*.log
+
+# --- Override files (local developer overrides — never share) ---
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# --- Environment secrets (never commit API keys) ---
+.env
+.envrc
+*.pem
+*.key
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db
